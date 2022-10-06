@@ -1,12 +1,12 @@
-import mongoose, { Schema } from "mongoose";
+import mongoose, { Schema } from 'mongoose'
 
 export type UserType = {
-  id?: any
+  id: string
   name: string
   email: string
   password: string
-  createdAt?: string
-  updatedAt?: string
+  createdAt?: Date
+  updatedAt?: Date
 }
 
 const UserSchema = new Schema<UserType>(
@@ -34,6 +34,9 @@ const UserSchema = new Schema<UserType>(
       default: Date.now,
       required: false
     }
+  },
+  {
+    timestamps: {}
   }
 )
 

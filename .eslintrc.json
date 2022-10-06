@@ -3,6 +3,7 @@
       "standard",
       "plugin:jest/recommended"
     ],
+    "parser": "@typescript-eslint/parser",
     "plugins": [
       "@typescript-eslint"
     ],

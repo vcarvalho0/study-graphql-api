@@ -1,12 +1,16 @@
+import 'reflect-metadata'
 import { ApolloServer } from 'apollo-server'
+import { schema } from './schema/user.resolver'
+import { connect } from './database/database'
 
-const PORT = 3000;
+const PORT = 3000
+connect()
 
 const server = new ApolloServer({
+  schema,
   context: ({ req }) => {
     const context = {
-      req,
-      token: req?.headers?.authorization
+      req
     }
 
     return context
