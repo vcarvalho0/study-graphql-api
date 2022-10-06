@@ -4,7 +4,6 @@ import { schema } from './schema/user.resolver'
 import { connect } from './database/database'
 
 const PORT = 3000
-connect()
 
 const server = new ApolloServer({
   schema,
@@ -17,6 +16,11 @@ const server = new ApolloServer({
   }
 })
 
-server.listen({ PORT }).then(({ url }) => {
-  console.log(`🚀 Server is running at ${url}`)
+server.listen(PORT).then(async ({ url }) => {
+  try {
+    await connect()
+    console.log(`🚀 Server is running at ${url}`)
+  } catch (error) {
+    console.log(error)
+  }
 })
