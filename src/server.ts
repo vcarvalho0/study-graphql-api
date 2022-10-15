@@ -1,10 +1,12 @@
 import 'reflect-metadata'
+import 'dotenv/config'
 import { ApolloServer } from 'apollo-server'
 import { connect } from './database/database'
 import { buildSchemaSync } from 'type-graphql'
 import { UserResolver } from './resolvers/user.resolver'
+import { getEnv } from './resources/env'
 
-const PORT = 3000
+const PORT = getEnv('PORT')
 
 async function start () {
   const schema = buildSchemaSync({

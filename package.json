@@ -5,6 +5,7 @@
   "license": "MIT",
   "private": "true",
   "scripts": {
+    "build": "tsc",
     "dev:server": "tsnd --transpile-only --ignore-watch node_modules src/server.ts",
     "docker:up": "docker-compose up -d",
     "docker:up:logs": "yarn docker:up && docker-compose logs -f",
@@ -15,7 +16,9 @@
   "dependencies": {
     "apollo-server": "3.10.2",
     "class-validator": "0.13.2",
+    "dotenv": "16.0.3",
     "graphql": "15.3.0",
+    "jsonwebtoken": "8.5.1",
     "mongoose": "6.6.1",
     "reflect-metadata": "0.1.13",
     "type-graphql": "1.1.1"
