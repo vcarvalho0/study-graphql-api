@@ -1,6 +1,7 @@
 import { Arg, Mutation, Query, Resolver } from 'type-graphql'
 import { User } from '../resolvers/user.type'
 import UserSchema from '../database/schemas/user'
+import bcrypt from 'bcrypt'
 
 @Resolver(User)
 export class UserResolver {
@@ -27,7 +28,9 @@ export class UserResolver {
     @Arg('email') email: string,
     @Arg('password') password: string
   ) {
-    const user = await UserSchema.create({ name, email, password })
+    const hashedPassword = await bcrypt.hash(password, 10)
+
+    const user = await UserSchema.create({ name, email, password: hashedPassword })
 
     return user
   }
